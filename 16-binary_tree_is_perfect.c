@@ -44,7 +44,7 @@ int binary_tree_is_full(const binary_tree_t *tree)
  * @tree: A pointer to the root node of the binary tree
  * Return: The height of the binary tree, or 0 if tree is NULL
  */
-int binary_tree_height(const binary_tree_t *tree)
+size_t binary_tree_height(const binary_tree_t *tree)
 {
 	int lh;
 	int rh;
