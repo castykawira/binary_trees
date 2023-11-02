@@ -18,7 +18,11 @@ size_t binary_tree_size(const binary_tree_t *tree)
  * @tree: A Pointer to the root node of the binary tree
  * Return: 1 if the perfect, 0 otherwise
  */
+<<<<<<< HEAD
 int binary_tree_is_perfect(const binary_tree_t *tree)
+=======
+size_t binary_tree_height(const binary_tree_t *tree)
+>>>>>>> 3cfd89707e1fba4500a468a6ced02a13de6726b4
 {
 	size_t height, size;
 
