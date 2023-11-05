@@ -1,20 +1,29 @@
 #include "binary_trees.h"
+#include <stdlib.h>
 
+/**
+ * append - adds a new node at the end of a linked list
+ * @head: Points to the head of a linked list
+ * @btnode: const binary tree node to append
+ * Return: pointer to head, or NULL on failure
+ */
 ll *append(ll *head, const binary_tree_t *btnode);
 void free_list(ll *head);
 ll *get_children(ll *head, const binary_tree_t *parent);
 void levels_rec(ll *head, void (*func)(int));
 
 /**
- * binary_tree_levelorder - It uses the level-order transveral to go
- * through a through a binary tree
- *
- * @tree: Points to the root node of the tree that should be transversed.
+ * binary_tree_levelorder - It uses the level-order traversal to go through a binary tree
+ *                          
+ * @tree: Points to the root node of the tree that should be traversed.
  * @func: Points to the function that should be called for each node.
  */
 void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 {
 	ll *children = NULL;
+
+	if (!tree)
+		return;
 
 	func(tree->n);
 	children = get_children(children, tree);
@@ -34,18 +43,19 @@ void levels_rec(ll *head, void (*func)(int))
 
 	if (!head)
 		return;
+
 	for (curr = head; curr != NULL; curr = curr->next)
 	{
 		func(curr->node->n);
 		children = get_children(children, curr->node);
 	}
+
 	levels_rec(children, func);
 	free_list(children);
 }
 
 /**
- * get_children - appends the children that belong to
- * a parent to a linked list.
+ * get_children - appends the children that belong to a parent to a linked list.
  * @head: Points to the head of the linked list where to append the children.
  * @parent: Points to the node whose children are supposed to be appended.
  * Return: Pointer to head of linked list of children.
@@ -56,7 +66,7 @@ ll *get_children(ll *head, const binary_tree_t *parent)
 		head = append(head, parent->left);
 	if (parent->right)
 		head = append(head, parent->right);
-	return (head);
+	return head;
 }
 
 /**
@@ -67,9 +77,7 @@ ll *get_children(ll *head, const binary_tree_t *parent)
  */
 ll *append(ll *head, const binary_tree_t *btnode)
 {
-	ll *new = NULL, *last = NULL;
-
-	new = malloc(sizeof(*new));
+	ll *new = malloc(sizeof(*new));
 	if (new)
 	{
 		new->node = btnode;
@@ -78,13 +86,13 @@ ll *append(ll *head, const binary_tree_t *btnode)
 			head = new;
 		else
 		{
-			last = head;
+			ll *last = head;
 			while (last->next)
 				last = last->next;
 			last->next = new;
 		}
 	}
-	return (head);
+	return head;
 }
 
 /**
