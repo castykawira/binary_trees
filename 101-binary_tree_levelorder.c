@@ -13,8 +13,9 @@ ll *get_children(ll *head, const binary_tree_t *parent);
 void levels_rec(ll *head, void (*func)(int));
 
 /**
- * binary_tree_levelorder - It uses the level-order traversal to go through a binary tree
- *                          
+ * binary_tree_levelorder - It uses the level-order traversal to
+ * go through a binary tree
+ *
  * @tree: Points to the root node of the tree that should be traversed.
  * @func: Points to the function that should be called for each node.
  */
@@ -55,7 +56,8 @@ void levels_rec(ll *head, void (*func)(int))
 }
 
 /**
- * get_children - appends the children that belong to a parent to a linked list.
+ * get_children - appends the children that belong to a
+ * parent to a linked list.
  * @head: Points to the head of the linked list where to append the children.
  * @parent: Points to the node whose children are supposed to be appended.
  * Return: Pointer to head of linked list of children.
@@ -66,7 +68,7 @@ ll *get_children(ll *head, const binary_tree_t *parent)
 		head = append(head, parent->left);
 	if (parent->right)
 		head = append(head, parent->right);
-	return head;
+	return (head);
 }
 
 /**
@@ -78,6 +80,7 @@ ll *get_children(ll *head, const binary_tree_t *parent)
 ll *append(ll *head, const binary_tree_t *btnode)
 {
 	ll *new = malloc(sizeof(*new));
+
 	if (new)
 	{
 		new->node = btnode;
@@ -87,12 +90,13 @@ ll *append(ll *head, const binary_tree_t *btnode)
 		else
 		{
 			ll *last = head;
+
 			while (last->next)
 				last = last->next;
 			last->next = new;
 		}
 	}
-	return head;
+	return (head);
 }
 
 /**
