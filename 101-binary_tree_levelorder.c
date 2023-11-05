@@ -1,16 +1,5 @@
 #include "binary_trees.h"
 
-/**
- * struct node_s - singly linked list
- * @node: const binary tree node
- * @next: points to the next node
- */
-typedef struct node_s
-{
-	const binary_tree_t *node;
-	struct node_s *next;
-} ll;
-
 ll *append(ll *head, const binary_tree_t *btnode);
 void free_list(ll *head);
 ll *get_children(ll *head, const binary_tree_t *parent);
@@ -19,7 +8,7 @@ void levels_rec(ll *head, void (*func)(int));
 /**
  * binary_tree_levelorder - It uses the level-order transveral to go
  * through a through a binary tree
- *                          
+ *
  * @tree: Points to the root node of the tree that should be transversed.
  * @func: Points to the function that should be called for each node.
  */
@@ -55,7 +44,8 @@ void levels_rec(ll *head, void (*func)(int))
 }
 
 /**
- * get_children - appends the children that belong to a parent to a linked list.
+ * get_children - appends the children that belong to
+ * a parent to a linked list.
  * @head: Points to the head of the linked list where to append the children.
  * @parent: Points to the node whose children are supposed to be appended.
  * Return: Pointer to head of linked list of children.
